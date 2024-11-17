@@ -20,4 +20,13 @@ def test_product_description(new_product):
     assert len(new_product.description) <= 500
 
 
+def test_product_positive_value(new_product):
+    """
+    Тестирование числового значения цены и кол-ва.
+    Проверяет, что числовое значение положительное.
+    """
+    assert new_product.price >= 0
+    assert new_product.quantity >= 0
+
+
 
