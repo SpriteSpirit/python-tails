@@ -40,4 +40,18 @@ def test_product_types(new_product):
     assert isinstance(new_product.quantity, int)
 
 
+@pytest.mark.parametrize("price, expected_price", [
+    (-100, 100),
+    (0, 0),
+    (100, 100)
+])
+def test_product_price_boundary(make_product, price, expected_price):
+    """
+    Проверка граничных значений стоимости.
+    Проверяет, что стоимость товара является положительной или равной 0.
+    """
+    product = make_product(price=price)
+    assert product.price == expected_price
+
+
 
