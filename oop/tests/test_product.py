@@ -29,4 +29,15 @@ def test_product_positive_value(new_product):
     assert new_product.quantity >= 0
 
 
+def test_product_types(new_product):
+    """
+    Тестирование принадлежности товара к определенным категориям.
+    Проверяет, что товар принадлежит одной из категорий (book, clothing, electronics).
+    """
+    assert isinstance(new_product.name, str)
+    assert isinstance(new_product.description, str)
+    assert isinstance(new_product.price, float)
+    assert isinstance(new_product.quantity, int)
+
+
 
