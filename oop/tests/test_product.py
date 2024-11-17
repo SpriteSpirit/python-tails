@@ -54,4 +54,14 @@ def test_product_price_boundary(make_product, price, expected_price):
     assert product.price == expected_price
 
 
-
+@pytest.mark.parametrize("quantity, expected_quantity", [
+    (-5, 5),
+    (0, 0),
+    (5, 5)
+])
+def test_product_quantity_boundary(make_product, quantity, expected_quantity):
+    """
+    Тест проверяет граничные значения количества товара
+    """
+    product = make_product(quantity=quantity)
+    assert product.quantity == expected_quantity
