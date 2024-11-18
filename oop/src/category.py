@@ -1,5 +1,5 @@
 from oop.src.product import Product
-from typing import List
+from typing import List, Set
 
 
 class Category:
@@ -9,18 +9,18 @@ class Category:
         name (str): Название товара
         description (str): Описание товара
         goods (list): Список товаров
+        unique_products(Set[Product]): Уникальные товары
+        total_categories(int): Общее кол-во категорий)
     """
     name: str
     description: str
     goods: List[Product]
-    unique_products: set = set()
+    unique_products: Set[Product]
     total_categories: int = 0
 
-    def __init__(self, name: str, description: str):
+    def __init__(self, name: str, description: str, goods: list):
         self.name = name
         self.description = description
-        self.goods = []
-        self.total_categories += 1
-
-        for good in self.goods:
-            self.unique_products.add(good)
+        self.goods = goods if goods is not None else []
+        self.unique_products = set(self.goods)
+        Category.total_categories += 1
