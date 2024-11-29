@@ -8,19 +8,25 @@ class Category:
     Attributes:
         name (str): Название товара
         description (str): Описание товара
-        goods (list): Список товаров
+        products (list): Список товаров
         unique_products(Set[Product]): Уникальные товары
         total_categories(int): Общее кол-во категорий)
     """
     name: str
     description: str
-    goods: List[Product]
+    products: List[Product]
     unique_products: Set[Product]
     total_categories: int = 0
 
     def __init__(self, name: str, description: str, goods: list):
         self.name = name
         self.description = description
-        self.goods = goods if goods is not None else []
-        self.unique_products = set(self.goods)
+        self.__products = goods if goods is not None else []
+        self.unique_products = set(self.products)
         Category.total_categories += 1
+
+    def add_product(self, product: object):
+        """
+        Добавление нового товара в категорию
+        """
+        self.__products.append(product)
