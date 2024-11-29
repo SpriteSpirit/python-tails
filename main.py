@@ -1,3 +1,4 @@
+from oop.src.category_iteration import CategoryIteration
 from oop.src.product import Product
 from oop.src.category import Category
 
@@ -16,6 +17,11 @@ def main():
     print(product1)
     print(category1)
     print(product1 + product2)
+
+    product_list = CategoryIteration(category1)
+
+    for product in product_list:
+        print(product)
 
 
 if __name__ == '__main__':
