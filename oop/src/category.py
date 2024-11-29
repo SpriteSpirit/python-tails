@@ -30,3 +30,10 @@ class Category:
         Добавление нового товара в категорию
         """
         self.__products.append(product)
+
+    @property
+    def products(self):
+        """
+        Список товаров
+        """
+        return [f'{product}, {product.price} руб. Остаток: {product.quantity} шт.' for product in self.__products]
