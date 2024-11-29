@@ -20,7 +20,7 @@ class Product:
         self.quantity = quantity if quantity > 0 else abs(quantity)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'
 
     @property
     def price(self):

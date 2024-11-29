@@ -26,7 +26,7 @@ class Category:
         Category.total_categories += 1
 
     def __str__(self):
-        return self.name
+        return f"{self.name}, количество продуктов: {len(self.products)} шт."
 
     def add_product(self, product: object):
         """
