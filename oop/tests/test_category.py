@@ -36,7 +36,7 @@ def test_category_product_list(new_category):
     Тестирование списка товаров
     Проверяет, что первый элемент списка является объектом класса Product
     """
-    assert new_category.__products is not None
+    assert new_category.goods is not None
     assert isinstance(new_category.goods[0], Product)
 
 
@@ -46,7 +46,7 @@ def test_category_types(new_category):
     """
     assert isinstance(new_category.name, str)
     assert isinstance(new_category.description, str)
-    assert isinstance(new_category.__products, list)
+    assert isinstance(new_category.goods, list)
     assert isinstance(new_category.unique_products, set)
     assert isinstance(new_category.total_categories, int)
 
@@ -57,4 +57,4 @@ def test_category_unique_products(new_category):
     Проверяет, что товары уникальны и два множества равны
     """
 
-    assert set(new_category.__products) == new_category.unique_products
+    assert set(new_category.goods) == new_category.unique_products

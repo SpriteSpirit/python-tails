@@ -164,8 +164,3 @@ cython_debug/
 
 /.idea/.gitignore
 /.idea/misc.xml
-/.idea/modules.xml
-/.idea/inspectionProfiles/profiles_settings.xml
-/.idea/inspectionProfiles/Project_Default.xml
-/.idea/python_tails.iml
-/.idea/vcs.xml
