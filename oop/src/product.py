@@ -16,8 +16,35 @@ class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
-        self.price = price if price > 0 else abs(price)
+        self.__price = abs(price)
         self.quantity = quantity if quantity > 0 else abs(quantity)
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def price(self):
+        """
+        Возвращает текущую цену товара.
+        """
+
+        return self.__price
+
+    @price.setter
+    def price(self, new_price):
+        if new_price <= 0:
+            print("Ошибка: Цена должна быть больше нуля.")
+        elif new_price < self.__price:
+            confirm = input(f"Цена товара '{self.name}' понижается. Подтвердить (y/n)? ")
+
+            if confirm.lower() == 'y':
+                self.__price = new_price
+                print("Цена успешно обновлена.")
+            else:
+                print("Изменение цены отменено.")
+        else:
+            self.__price = new_price
+            print("Цена успешно обновлена.")
 
     @classmethod
     def create_product(cls, name: str, description: str, price: float, quantity: int, products: list = None):
