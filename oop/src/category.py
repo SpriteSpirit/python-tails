@@ -22,7 +22,7 @@ class Category:
         self.name = name
         self.description = description
         self.__products = goods if goods is not None else []
-        self.unique_products = set(self.products)
+        self.unique_products = set(goods)
         Category.total_categories += 1
 
     def add_product(self, product: object):
