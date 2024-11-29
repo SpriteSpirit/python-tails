@@ -15,6 +15,7 @@ def main():
 
     print(product1)
     print(category1)
+    print(product1 + product2)
 
 
 if __name__ == '__main__':
