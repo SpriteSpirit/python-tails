@@ -7,6 +7,7 @@ class Product:
         price (float): Цена товара
         quantity (int): Количество товара в наличии
     """
+
     name: str
     description: str
     price: float
