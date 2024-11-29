@@ -25,6 +25,9 @@ class Category:
         self.unique_products = set(goods)
         Category.total_categories += 1
 
+    def __str__(self):
+        return self.name
+
     def add_product(self, product: object):
         """
         Добавление нового товара в категорию
