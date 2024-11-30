@@ -1,4 +1,8 @@
-class Product:
+from oop.src.abc_base import AbstractProduct
+from oop.src.mixin import PrintInfoMixin
+
+
+class Product(AbstractProduct, PrintInfoMixin):
     """
     Класс товара.
     Attributes:
@@ -14,10 +18,9 @@ class Product:
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
-        self.name = name
-        self.description = description
-        self.__price = abs(price)
+        super().__init__(name, description, price)
         self.quantity = quantity if quantity > 0 else abs(quantity)
+        self.__price = price  # Защищенное поле для цены
 
     def __str__(self):
         return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'
@@ -52,6 +55,9 @@ class Product:
         else:
             self.__price = new_price
             print("Цена успешно обновлена.")
+
+    def get_info(self):
+        return f"Продукт: {self.name}, Описание: {self.description}, Цена: {self.price}, Количество: {self.quantity}"
 
     @classmethod
     def create_product(cls, name: str, description: str, price: float, quantity: int, products: list = None):
