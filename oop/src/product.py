@@ -23,6 +23,10 @@ class Product:
         return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'
 
     def __add__(self, other):
+
+        if not isinstance(other, Product):
+            raise TypeError('Объекты должны быть экземплярами класса Product.')
+
         return self.price * self.quantity + other.price * other.quantity
 
     @property
