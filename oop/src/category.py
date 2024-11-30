@@ -50,3 +50,16 @@ class Category(AbstractOrder, PrintInfoMixin):
         Список товаров
         """
         return [f'{product}, {product.price} руб. Остаток: {product.quantity} шт.' for product in self.__products]
+
+    def average_price(self):
+        """
+        Подсчитывает средний ценник всех товаров в категории.
+        Обрабатывает случай, когда в категории нет товаров.
+        """
+
+        try:
+            total_price = sum(product.price for product in self.__products)
+            average = total_price / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+        return average
