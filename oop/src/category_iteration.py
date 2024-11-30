@@ -8,6 +8,7 @@ class CategoryIteration:
     """
     Класс для итерации по категориям
     """
+    category: Category
 
     def __init__(self, category: "Category"):
         self._index = 0

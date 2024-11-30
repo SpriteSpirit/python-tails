@@ -5,10 +5,6 @@ class Smartphone(Product):
     """
     Класс смартфона.
     """
-    name: str
-    description: str
-    price: float
-    quantity: int
     performance: str
     model: str
 
@@ -23,3 +19,7 @@ class Smartphone(Product):
     def __str__(self):
         return (f"{super().__str__()} | Производительность: {self.performance}, Модель: {self.model}, "
                 f"Память: {self.memory}, Цвет: {self.color}")
+
+    def get_info(self):
+        return super().get_info() + (f", Производительность: {self.performance}, Модель: {self.model}, "
+                                     f"Память: {self.memory}, Цвет: {self.color}")

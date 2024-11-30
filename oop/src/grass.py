@@ -5,10 +5,6 @@ class Grass(Product):
     """
     Класс травы.
     """
-    name: str
-    description: str
-    price: float
-    quantity: int
     country: str
     germination_period: int
     color: str
