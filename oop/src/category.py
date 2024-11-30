@@ -1,8 +1,10 @@
+from oop.src.mixin import PrintInfoMixin
+from oop.src.order import AbstractOrder
 from oop.src.product import Product
 from typing import List, Set
 
 
-class Category:
+class Category(AbstractOrder, PrintInfoMixin):
     """
     Класс категории товара.
     Attributes:
@@ -18,15 +20,20 @@ class Category:
     unique_products: Set[Product]
     total_categories: int = 0
 
-    def __init__(self, name: str, description: str, goods: list):
-        self.name = name
-        self.description = description
-        self.__products = goods if goods is not None else []
-        self.unique_products = set(goods)
+    def __init__(self, name: str, description: str, products: list):
+        super().__init__(name, description)
+        self.__products = products if products is not None else []
+        self.unique_products = set(products)
         Category.total_categories += 1
 
     def __str__(self):
         return f"{self.name}, количество продуктов: {len(self.products)} шт."
+
+    def get_info(self):
+        """
+        Выводит информацию о категории
+        """
+        return f"Категория: {self.name}, Описание: {self.description}, Количество продуктов: {len(self.products)}"
 
     def add_product(self, product: object):
         """
