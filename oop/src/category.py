@@ -32,7 +32,10 @@ class Category:
         """
         Добавление нового товара в категорию
         """
-        self.__products.append(product)
+        if isinstance(product, Product) or issubclass(type(product), Product):
+            self.__products.append(product)
+        else:
+            raise TypeError("В категорию можно добавлять только товары или их подклассы.")
 
     @property
     def products(self):

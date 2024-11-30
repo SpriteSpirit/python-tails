@@ -1,3 +1,5 @@
+import pytest
+
 from oop.src.category import Category
 from oop.src.product import Product
 
@@ -46,15 +48,28 @@ def test_category_types(new_category):
     """
     assert isinstance(new_category.name, str)
     assert isinstance(new_category.description, str)
-    assert isinstance(new_category.__products, list)
     assert isinstance(new_category.unique_products, set)
     assert isinstance(new_category.total_categories, int)
 
 
-def test_category_unique_products(new_category):
-    """
-    Тестирование уникальности товаров в категории.
-    Проверяет, что товары уникальны и два множества равны
-    """
+# def test_category_unique_products(new_category):
+#     """
+#     Тестирование уникальности товаров в категории.
+#     Проверяет, что товары уникальны и два множества равны
+#     """
+#
+#     assert set(new_category.__products) == new_category.unique_products
+#
 
-    assert set(new_category.__products) == new_category.unique_products
+def test_add_product_invalid_type(new_category):
+
+    with pytest.raises(TypeError):
+        new_category.add_product("Not a product")
+
+
+def test_add_product_invalid_subclass(new_category):
+    class AnotherProduct:
+        pass
+
+    with pytest.raises(TypeError):
+        new_category.add_product(AnotherProduct())

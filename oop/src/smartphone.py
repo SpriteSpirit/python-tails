@@ -1,4 +1,4 @@
-from product import Product
+from oop.src.product import Product
 
 
 class Smartphone(Product):
