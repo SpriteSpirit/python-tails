@@ -19,7 +19,9 @@ class Product(AbstractProduct, PrintInfoMixin):
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         super().__init__(name, description, price)
-        self.quantity = quantity if quantity > 0 else abs(quantity)
+        if quantity <= 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен.")
+        self.quantity = quantity
         self.__price = price  # Защищенное поле для цены
 
     def __str__(self):
