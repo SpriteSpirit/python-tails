@@ -23,6 +23,9 @@ def main():
     for product in product_list:
         print(product)
 
+    category = Category("Категория 1", "Описание категории", [])
+    print(category)
+
 
 if __name__ == '__main__':
     main()
